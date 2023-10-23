@@ -27,10 +27,14 @@ void insertion_sort_list(listint_t **list)
 		{
 			current_sort = sort;
 			while (current_sort->next != NULL && current_sort->next->n < current->n)
+			{
 				current_sort = current_sort->next;
+			}
 			current->next = current_sort->next;
 			if (current_sort->next != NULL)
+			{
 				current_sort->next->prev = current;
+			}
 			current->prev = current_sort;
 			current_sort->next = current;
 		}
