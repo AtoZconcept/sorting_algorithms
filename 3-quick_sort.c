@@ -31,7 +31,7 @@ int pivot_partition(int *array, int left, int right, size_t size)
 	array[i] = array[right];
 	array[right] = tmp;
 	print_array(array, size);
-	return (i);
+	return (i - 1);
 }
 
 /**
