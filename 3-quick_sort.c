@@ -5,6 +5,7 @@
  * @array: the array to partition
  * @left: the left partition
  * @right: the right partition
+ * @size: the size of the array
  * Return: 0
  */
 
@@ -38,6 +39,7 @@ int pivot_partition(int *array, int left, int right, size_t size)
  * @array: the array to sort
  * @left: the left partition
  * @right: the right partition
+ * @size: the size of the array
  */
 
 void call_partition(int *array, int left, int right, size_t size)
