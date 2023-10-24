@@ -8,7 +8,7 @@
  * Return: 0
  */
 
-int pivot_partition(int *array, int left, int right)
+int pivot_partition(int *array, int left, int right, size_t size)
 {
 	int pivot, i, j, tmp;
 
@@ -29,6 +29,7 @@ int pivot_partition(int *array, int left, int right)
 	tmp = array[i];
 	array[i] = array[right];
 	array[right] = tmp;
+	print_array(array, size);
 	return (i);
 }
 
@@ -39,16 +40,16 @@ int pivot_partition(int *array, int left, int right)
  * @right: the right partition
  */
 
-void call_partition(int *array, int left, int right)
+void call_partition(int *array, int left, int right, size_t size)
 {
 	int pivot;
 
 	if (right <= left)
 		return;
 
-	pivot = pivot_partition(array, left, right);
-	call_partition(array, left, pivot - 1);
-	call_partition(array, pivot + 1, right);
+	pivot = pivot_partition(array, left, right, size);
+	call_partition(array, left, pivot - 1, size);
+	call_partition(array, pivot + 1, right, size);
 }
 /**
  * quick_sort - a function that sorts an array of integers
@@ -67,5 +68,5 @@ void quick_sort(int *array, size_t size)
 	left = 0;
 	right = size - 1;
 
-	call_partition(array, left, right);
+	call_partition(array, left, right, size);
 }
