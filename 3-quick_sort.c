@@ -13,25 +13,32 @@ int pivot_partition(int *array, int left, int right, size_t size)
 {
 	int pivot, i, j, tmp;
 
-	i = left - 1;
+	i = left;
 	pivot = array[right];
 
-	for (j = left; j <= right; j++)
+	for (j = left; j < right; j++)
 	{
 		if (array[j] < pivot)
 		{
+			if (i != j)
+			{
+
+				tmp = array[i];
+				array[i] = array[j];
+				array[j] = tmp;
+				print_array(array, size);
+			}
 			i++;
-			tmp = array[i];
-			array[i] = array[j];
-			array[j] = tmp;
 		}
 	}
-	i++;
-	tmp = array[i];
-	array[i] = array[right];
-	array[right] = tmp;
-	print_array(array, size);
-	return (i - 1);
+	if (array[i] != array[right])
+	{
+		tmp = array[i];
+		array[i] = array[right];
+		array[right] = tmp;
+		print_array(array, size);
+	}
+	return (i);
 }
 
 /**
